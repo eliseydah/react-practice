@@ -1,6 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Order from "./Order";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
+const router = createRouter({ routeTree });
+// import Order from "./Order";
+// import PizzaOfTheDay from "./PizzaOfTheDay";
+// import Header from "./Header";
+// import { CartContext } from "./contexts";
 
 // const Pizza = (props) => {
 //   return React.createElement("div", {}, [
@@ -9,16 +15,13 @@ import Order from "./Order";
 //   ]);
 // };
 const App = () => {
- return (
-  // <StrictMode>
-    <div>
-      <h1> Padre Gino's  - order now</h1>
-    <Order/>
-    </div>
-  // </StrictMode>
- )
+  return (
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  );
 };
 
 const container = document.getElementById("root");
 const root = createRoot(container);
-root.render(<App/>);
+root.render(<App />);
